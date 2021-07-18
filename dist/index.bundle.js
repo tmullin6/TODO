@@ -16,7 +16,7 @@
   \******************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);\n// Imports\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"body {\\n  background-color: #121212;\\n}\\n.header {\\n  display: flex;\\n  justify-content: space-between;\\n  width: 100%;\\n  height: 5vw;\\n  background-color: #3b3b3b;\\n  opacity: 80%;\\n  box-shadow: 0px 11px 15px -7px black;\\n}\\n.head-text {\\n  color: white;\\n  font-size: 2.5em;\\n  padding-top: 5px;\\n  padding-left: 15px;\\n}\\n.git-text {\\n  color: white;\\n  font-size: 1em;\\n  padding-top: 45px;\\n  padding-right: 10px;\\n}\\n.app-body {\\n  display: flex;\\n  margin-top: 15px;\\n}\\n.side-bar {\\n  color: white;\\n  border-right: 1px solid white;\\n  width: 20vw;\\n  height: 35vw;\\n}\\n.list-area {\\n  color: white;\\n  height: 35vw;\\n}\\n\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://list-it/./src/styles.less?./node_modules/css-loader/dist/cjs.js!./node_modules/less-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);\n// Imports\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"body {\\n  background-color: #121212;\\n}\\n.header {\\n  display: flex;\\n  justify-content: space-between;\\n  width: 100%;\\n  height: 5vw;\\n  background-color: #3b3b3b;\\n  opacity: 80%;\\n  box-shadow: 0px 11px 15px -7px black;\\n}\\n.head-text {\\n  color: white;\\n  font-size: 2.5em;\\n  padding-top: 5px;\\n  padding-left: 15px;\\n}\\n.git-text {\\n  color: white;\\n  font-size: 1em;\\n  padding-top: 45px;\\n  padding-right: 10px;\\n}\\n.app-body {\\n  display: flex;\\n  margin-top: 15px;\\n}\\n.side-bar {\\n  color: white;\\n  border-right: 1px solid white;\\n  width: 20vw;\\n  height: 35vw;\\n}\\n.list-area {\\n  color: white;\\n  height: 35vw;\\n  width: 65vw;\\n}\\n.add-button {\\n  margin-top: 400px;\\n  margin-left: 100%;\\n}\\n.todo-form {\\n  position: absolute;\\n  height: fit-content;\\n  width: 400px;\\n  border: 1px solid black;\\n  box-shadow: 0px 11px 15px -7px black;\\n  background-color: #332940;\\n  text-align: center;\\n  margin-top: 8vw;\\n  margin-left: 40vw;\\n}\\n.todo-form .form-text {\\n  font-size: 20px;\\n  color: white;\\n  padding: 5px;\\n}\\n.todo-form .form-submit {\\n  display: block;\\n  text-align: center;\\n  margin-top: 10px;\\n  margin-bottom: 10px;\\n  margin-left: 170px;\\n}\\n.todo-card {\\n  display: flex;\\n  justify-content: space-between;\\n  background-color: white;\\n  height: fit-content;\\n  width: 400px;\\n}\\n\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://list-it/./src/styles.less?./node_modules/css-loader/dist/cjs.js!./node_modules/less-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -100,13 +100,53 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, style) {\
 
 /***/ }),
 
+/***/ "./src/2x/outline_add_circle_outline_white_24dp.png":
+/*!**********************************************************!*\
+  !*** ./src/2x/outline_add_circle_outline_white_24dp.png ***!
+  \**********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"8e35a78632716a12637f.png\";\n\n//# sourceURL=webpack://list-it/./src/2x/outline_add_circle_outline_white_24dp.png?");
+
+/***/ }),
+
+/***/ "./src/createToDoCard.js":
+/*!*******************************!*\
+  !*** ./src/createToDoCard.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction createToDoCard (toDoItem) {\n\n    const appArea = document.querySelector(\".app-body\");\n    const card = document.createElement(\"div\");\n    const name = document.createElement(\"p\");\n    const desc = document.createElement(\"p\");\n    const dueDate = document.createElement(\"p\");\n    const createdDate = document.createElement(\"p\");\n\n    card.classList.add(\"todo-card\");\n\n    name.textContent=toDoItem.name;\n    desc.textContent=toDoItem.desc;\n    dueDate.textContent=toDoItem.dueDate;\n    createdDate.textContent=toDoItem.createdDate;\n\n    appArea.appendChild(card);\n    card.appendChild(name);\n    card.appendChild(desc);\n    card.appendChild(dueDate);\n    card.appendChild(createdDate);\n    \n\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createToDoCard);\n\n//# sourceURL=webpack://list-it/./src/createToDoCard.js?");
+
+/***/ }),
+
+/***/ "./src/createToDoForm.js":
+/*!*******************************!*\
+  !*** ./src/createToDoForm.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n//Function to create the DOM Elements for the To Do Item Input Form\nfunction createToDoForm (){\n\n    const appArea = document.querySelector('.app-body');\n\n    //Creates all DOM Elements of the Input Form\n    const todoForm = document.createElement(\"div\");\n    const name = document.createElement('p');\n    const enterName = document.createElement('input');\n    const desc = document.createElement('p');\n    const enterDesc = document.createElement('input');\n    const dueDate = document.createElement('p');\n    const enterDate = document.createElement('input');\n    const submit = document.createElement('button');\n\n    //Text Content for Input Headers\n    name.textContent=\"Task:\"\n    desc.textContent=\"Description:\";\n    dueDate.textContent=\"Due Date:\";\n    submit.textContent=\"Submit\";\n\n    name.classList.add(\"form-text\");\n    desc.classList.add(\"form-text\");\n    dueDate.classList.add(\"form-text\");\n\n    //Set Type, Placeholder text, and Id for each input element\n    enterName.type=\"input\";\n    enterName.placeholder = \"Enter Task\";\n    enterName.id = \"name-input\";\n\n    enterDesc.type=\"input\";\n    enterDesc.placeholder = \"Description (optional)\";\n    enterDesc.id = \"desc-input\";\n\n    enterDate.type=\"input\";\n    enterDate.placeholder=\"MM/DD/YYYY\";\n    enterDate.id = \"date-input\";\n\n    submit.type='submit';\n    submit.classList.add('form-submit');\n    \n   \n\n    todoForm.classList.add('todo-form');\n\n    appArea.appendChild(todoForm);\n\n    todoForm.appendChild(name);\n    todoForm.appendChild(enterName);\n    todoForm.appendChild(desc);\n    todoForm.appendChild(enterDesc);\n    todoForm.appendChild(dueDate);\n    todoForm.appendChild(enterDate);\n    todoForm.appendChild(submit);\n\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createToDoForm);\n\n//# sourceURL=webpack://list-it/./src/createToDoForm.js?");
+
+/***/ }),
+
+/***/ "./src/createToDoItem.js":
+/*!*******************************!*\
+  !*** ./src/createToDoItem.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n\n//Function that creates a To Do Item object and returns the object with the user inputted values\nfunction createToDoItem () {\n\n    const nameInput = document.querySelector('#name-input');\n    const descInput = document.querySelector('#desc-input');\n    const dateInput = document.querySelector('#date-input');\n\n    \n        let name = nameInput.value;\n        let desc = descInput.value;\n        let date = dateInput.value;\n       \n        let item = ToDo(name,desc,date);\n        let today = item.getTodayDate();\n        item.createdDate = today;\n\n        return item;\n    \n    \n\n\n}\n\n/*Factory Function that creates a ToDo Object with a name, \na description, a due date, and a date that the object was created.*/\nconst ToDo = (name,desc,dueDate, createdDate) => {\n  \n\n    \n    const getTodayDate = ()=>{\n        let date = new Date();\n        let today = String(date.getMonth()+1)+ \"/\"+ String(date.getDate())+ \"/\" + String(date.getFullYear());\n\n        return today;\n    }\n\n    return {name,desc,dueDate,createdDate, getTodayDate}\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createToDoItem);\n\n//# sourceURL=webpack://list-it/./src/createToDoItem.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_less__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.less */ \"./src/styles.less\");\n\n\nrenderHeader();\n\nconst appArea = document.createElement('div');\nconst sideBar = document.createElement('div');\nconst toDoArea = document.createElement('div');\n\nappArea.classList.add(\"app-body\");\nsideBar.classList.add(\"side-bar\");\ntoDoArea.classList.add(\"list-area\");\n\nsideBar.textContent = \"List of projects and lists here\";\ntoDoArea.textContent = \"List of To Do Items here\";\n\ndocument.body.appendChild(appArea);\nappArea.appendChild(sideBar);\nappArea.appendChild(toDoArea);\n\nfunction renderHeader (){\n\nconst header = document.createElement('div');\nconst title = document.createElement('div');\nconst git = document.createElement('div');\n\nheader.classList.add(\"header\");\ntitle.classList.add(\"head-text\");\ngit.classList.add(\"git-text\");\n\ntitle.textContent=\"List-it\";\ngit.textContent=\"Check out my github for more\";\n\ndocument.body.appendChild(header);\nheader.appendChild(title);\nheader.appendChild(git);\n\n}\n\n//# sourceURL=webpack://list-it/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _createToDoItem_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createToDoItem.js */ \"./src/createToDoItem.js\");\n/* harmony import */ var _createToDoForm_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createToDoForm.js */ \"./src/createToDoForm.js\");\n/* harmony import */ var _createToDoCard_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./createToDoCard.js */ \"./src/createToDoCard.js\");\n/* harmony import */ var _styles_less__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles.less */ \"./src/styles.less\");\n/* harmony import */ var _2x_outline_add_circle_outline_white_24dp_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./2x/outline_add_circle_outline_white_24dp.png */ \"./src/2x/outline_add_circle_outline_white_24dp.png\");\n\n\n\n\n\n\n//Load up header to web app\nrenderHeader();\n\n//Renders the body of the web app\nrenderAppBody();\n\n//Create array of To-Do List Items\nlet toDoItems = [];\n\n//Event Listener that creates the pop up form to enter a new item to the to do list\nconst addItem = document.querySelector(\"#Add-item\");\naddItem.addEventListener('click', ()=>{\n   (0,_createToDoForm_js__WEBPACK_IMPORTED_MODULE_1__.default)();\n\n   const submit = document.querySelector('.form-submit');\n\n    //Takes the information added to the form and creates a new ToDo object and adds it to the array of To-Do Items\n    submit.addEventListener('click',()=>{\n        let newItem = (0,_createToDoItem_js__WEBPACK_IMPORTED_MODULE_0__.default)();\n\n        const form = document.querySelector(\".todo-form\");\n\n        while(form.firstChild){\n            form.removeChild(form.lastChild);\n        };\n\n        toDoItems.push(newItem);\n        (0,_createToDoCard_js__WEBPACK_IMPORTED_MODULE_2__.default)(newItem);\n    });\n\n});\n\n\n\n\n\n//Function that Creates all DOM Elements for the Web App Header\nfunction renderHeader (){\n\nconst header = document.createElement('div');\nconst title = document.createElement('div');\nconst git = document.createElement('div');\n\nheader.classList.add(\"header\");\ntitle.classList.add(\"head-text\");\ngit.classList.add(\"git-text\");\n\ntitle.textContent=\"List-it\";\ngit.textContent=\"Check out my github for more\";\n\ndocument.body.appendChild(header);\nheader.appendChild(title);\nheader.appendChild(git);\n};\n\n//Function that Creates the DOM elements that make up the main body of the web app\nfunction renderAppBody() {\n\n    const appArea = document.createElement('div');\n    const sideBar = document.createElement('div');\n    const toDoArea = document.createElement('div');\n    const addItemDiv = document.createElement('div');\n\n    appArea.classList.add(\"app-body\");\n    sideBar.classList.add(\"side-bar\");\n    toDoArea.classList.add(\"list-area\");\n\n    sideBar.textContent = \"List of projects and lists here\";\n    toDoArea.textContent = \"List of To Do Items here\";\n\n    const addItem = new Image();\n    addItem.src=_2x_outline_add_circle_outline_white_24dp_png__WEBPACK_IMPORTED_MODULE_4__;\n    addItem.id = \"Add-item\";\n\n    addItemDiv.classList.add('add-button');\n    document.body.appendChild(appArea);\n    appArea.appendChild(sideBar);\n    appArea.appendChild(toDoArea);\n    toDoArea.appendChild(addItemDiv);\n    addItemDiv.appendChild(addItem);\n};\n\n//# sourceURL=webpack://list-it/./src/index.js?");
 
 /***/ })
 
@@ -161,6 +201,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -175,6 +227,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /************************************************************************/

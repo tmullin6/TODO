@@ -34,6 +34,11 @@ module.exports = {
                 use: ['style-loader', 'css-loader','less-loader',],
             },
 
+            {
+                test: /\.png$/i,
+                type: "asset/resource",
+            }
+
         ],
     },
 
