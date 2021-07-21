@@ -1,6 +1,6 @@
 import createToDoItem from './createToDoItem.js';
 import createToDoForm from "./createToDoForm.js";
-import createToDoCard from "./createToDoCard.js";
+import createToDoCards from "./createToDoCards.js";
 import './styles.less';
 import add from './2x/outline_add_circle_outline_white_24dp.png'
 
@@ -25,13 +25,12 @@ addItem.addEventListener('click', ()=>{
         let newItem = createToDoItem();
 
         const form = document.querySelector(".todo-form");
-
-        while(form.firstChild){
-            form.removeChild(form.lastChild);
-        };
-
+        const toDoArea = document.querySelector(".app-body");
+       
+        toDoArea.removeChild(form);
         toDoItems.push(newItem);
-        createToDoCard(newItem);
+        console.log(toDoItems);
+        createToDoCards(toDoItems);
     });
 
 });
@@ -72,7 +71,6 @@ function renderAppBody() {
     toDoArea.classList.add("list-area");
 
     sideBar.textContent = "List of projects and lists here";
-    toDoArea.textContent = "List of To Do Items here";
 
     const addItem = new Image();
     addItem.src=add;

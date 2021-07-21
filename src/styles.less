@@ -1,4 +1,5 @@
 @backgroundColor: #121212;
+@shadow: 0px 11px 15px -7px black;
 
 body {
     background-color: @backgroundColor;
@@ -11,7 +12,7 @@ body {
     height: 5vw;
     background-color: lighten(@backgroundColor,16%);
     opacity: 80%;
-    box-shadow: 0px 11px 15px -7px black;
+    box-shadow: @shadow;
 }
 
 .head-text {
@@ -31,6 +32,7 @@ body {
 .app-body{
     display: flex;
     margin-top: 15px;
+    height: 300px;
 }
 
 .side-bar {
@@ -41,7 +43,6 @@ body {
 }
 
 .list-area {
-    color: white;
     height: 35vw;
     width: 65vw;
 }
@@ -57,7 +58,7 @@ body {
     height: fit-content;
     width: 400px;
     border: 1px solid black;
-    box-shadow: 0px 11px 15px -7px black;
+    box-shadow: @shadow;
     background-color: #332940;
     text-align: center;
     margin-top: 8vw;
@@ -81,10 +82,50 @@ body {
    
 }
 
-.todo-card {
-    display: flex;
-    justify-content: space-between;
-    background-color: white;
-    height: fit-content;
-    width: 400px;
+
+.card-list {
+    list-style: none;
+    height: 500px;
+    position: absolute;
+    overflow-y: auto;
+    margin-top: 5vw;
+    margin-left: 20vw;
+
+    .todo-card {
+        display: flex;
+        background-color: lighten(@backgroundColor,25%);
+        color: white;
+        box-shadow: @shadow;
+        justify-content: space-between;
+        padding: 10px 5px 0px 5px;
+        margin: 15px;
+        height: 30px;
+        width: 650px;
+    }
+
+}
+
+@keyframes slide-in{
+    0% {width: 0px}
+    100% {width: fit-content};
+}
+
+.card-buttons{
+    display: inline-block;
+    animation: slide-in;
+    animation-duration: 0.25s;
+    .complete {
+        background-color: green;
+        color: white;
+        height: fit-content;
+        width: fit-content;
+    }
+
+    .remove {
+        background-color: red;
+        color: black;
+        height: fit-content;
+        width: fit-content;
+
+    }
 }
