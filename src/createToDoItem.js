@@ -1,3 +1,4 @@
+import { toDoItems } from "./index.js";
 
 //Function that creates a To Do Item object and returns the object with the user inputted values
 function createToDoItem () {
@@ -24,7 +25,7 @@ function createToDoItem () {
 
 /*Factory Function that creates a ToDo Object with a name, 
 a description, a due date, and a date that the object was created.*/
-const ToDo = (name,desc,dueDate, createdDate) => {
+const ToDo = (name,desc,dueDate, index, createdDate) => {
   
 
     
@@ -35,7 +36,7 @@ const ToDo = (name,desc,dueDate, createdDate) => {
         return today;
     }
 
-    return {name,desc,dueDate,createdDate, getTodayDate}
+    return {name,desc,dueDate,createdDate,index, getTodayDate}
 }
 
 export default createToDoItem

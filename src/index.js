@@ -23,14 +23,16 @@ addItem.addEventListener('click', ()=>{
     //Takes the information added to the form and creates a new ToDo object and adds it to the array of To-Do Items
     submit.addEventListener('click',()=>{
         let newItem = createToDoItem();
+        toDoItems.push(newItem);
+        newItem.index = toDoItems.indexOf(newItem);
 
         const form = document.querySelector(".todo-form");
         const toDoArea = document.querySelector(".app-body");
        
         toDoArea.removeChild(form);
-        toDoItems.push(newItem);
-        console.log(toDoItems);
         createToDoCards(toDoItems);
+        
+        
     });
 
 });
@@ -83,3 +85,5 @@ function renderAppBody() {
     toDoArea.appendChild(addItemDiv);
     addItemDiv.appendChild(addItem);
 };
+
+export {toDoItems as toDoItems};

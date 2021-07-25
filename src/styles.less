@@ -13,26 +13,39 @@ body {
     background-color: lighten(@backgroundColor,16%);
     opacity: 80%;
     box-shadow: @shadow;
+
+    .head-text {
+        color: white;
+        font-size: 2.5em;
+        padding-top: 5px;
+        padding-left: 15px;
+    }
+    
+    .git-text {
+        color: white;
+        font-size: 1em;
+        padding-top: 45px;
+        padding-right: 10px;
+    }
 }
 
-.head-text {
-    color: white;
-    font-size: 2.5em;
-    padding-top: 5px;
-    padding-left: 15px;
-}
 
-.git-text {
-    color: white;
-    font-size: 1em;
-    padding-top: 45px;
-    padding-right: 10px;
-}
 
 .app-body{
     display: flex;
     margin-top: 15px;
     height: 300px;
+
+    .list-area {
+        height: 35vw;
+        width: 65vw;
+    }
+    
+    .add-button {
+        cursor: pointer;
+        margin-top: 400px;
+        margin-left: 100%;
+    }
 }
 
 .side-bar {
@@ -42,16 +55,7 @@ body {
     height: 35vw;
 }
 
-.list-area {
-    height: 35vw;
-    width: 65vw;
-}
 
-.add-button {
-
-    margin-top: 400px;
-    margin-left: 100%;
-}
 
 .todo-form {
     position: absolute;
@@ -61,7 +65,7 @@ body {
     box-shadow: @shadow;
     background-color: #332940;
     text-align: center;
-    margin-top: 8vw;
+    margin-top: 4vw;
     margin-left: 40vw;
 
     .form-text {
@@ -71,10 +75,11 @@ body {
     }
 
     .form-submit {
+        cursor: pointer;
         display: block;
         text-align: center;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-top: 20px;
+        margin-bottom: 30px;
         margin-left: 170px;
 
     }
@@ -101,20 +106,54 @@ body {
         margin: 15px;
         height: 30px;
         width: 650px;
+
+        .completed {
+            color: green;
+            
+        }
+
     }
 
+    
+
 }
 
-@keyframes slide-in{
-    0% {width: 0px}
-    100% {width: fit-content};
-}
+/*@keyframes slide-in{
+
+    0% {
+        width: 0px;
+        display: none;
+    }
+
+    25% {
+        width: 10px;
+        display: none;
+    }
+
+    50% {
+        width: 20px;
+         display: none;
+    }
+    
+    75% {
+        width: 30px;
+        display: none;
+    }
+
+    100% {
+        width:40px;
+        display: inline-block;
+    }
+}*/
 
 .card-buttons{
-    display: inline-block;
-    animation: slide-in;
-    animation-duration: 0.25s;
+    //animation: slide-in;
+    //animation-duration: 0.2s;
+    height: 30px;
+    width: fit-content;
+
     .complete {
+        cursor: pointer;
         background-color: green;
         color: white;
         height: fit-content;
@@ -122,6 +161,7 @@ body {
     }
 
     .remove {
+        cursor: pointer;
         background-color: red;
         color: black;
         height: fit-content;
