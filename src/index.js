@@ -11,10 +11,23 @@ renderHeader();
 renderAppBody();
 
 //Create array of To-Do List Items
+
 let toDoItems = [];
+let toDoLists = [];
+
+window.onload = ()=>{
+    if (localStorage.length > 0) {
+        toDoItems = JSON.parse(localStorage.getItem("items"));
+        toDoItems.forEach(item=>item.listed=false);
+        console.log(toDoItems);
+        createToDoCards(toDoItems);
+    }
+};
+
 
 //Event Listener that creates the pop up form to enter a new item to the to do list
-const addItem = document.querySelector("#Add-item");
+const addItem = document.querySelector("#add-item");
+
 addItem.addEventListener('click', ()=>{
    createToDoForm();
 
@@ -24,20 +37,19 @@ addItem.addEventListener('click', ()=>{
     submit.addEventListener('click',()=>{
         let newItem = createToDoItem();
         toDoItems.push(newItem);
-        newItem.index = toDoItems.indexOf(newItem);
 
+        console.log(newItem);
         const form = document.querySelector(".todo-form");
         const toDoArea = document.querySelector(".app-body");
        
         toDoArea.removeChild(form);
         createToDoCards(toDoItems);
+        saveToLocalStorage(toDoItems);
         
         
     });
 
 });
-
-
 
 
 
@@ -65,25 +77,46 @@ function renderAppBody() {
 
     const appArea = document.createElement('div');
     const sideBar = document.createElement('div');
+    const projectList = document.createElement("div");
+    const addProject = document.createElement('div');
     const toDoArea = document.createElement('div');
+    const cardList = document.createElement('div');
     const addItemDiv = document.createElement('div');
 
     appArea.classList.add("app-body");
-    sideBar.classList.add("side-bar");
     toDoArea.classList.add("list-area");
+    cardList.classList.add("card-list");
 
-    sideBar.textContent = "List of projects and lists here";
+    sideBar.classList.add("side-bar");
+    projectList.classList.add("project-list");
+    addProject.classList.add("add-project");
+   
+
+    addProject.textContent = "Add New List";
+    projectList.textContent="Lists here";
 
     const addItem = new Image();
     addItem.src=add;
-    addItem.id = "Add-item";
+    addItem.id ="add-item";
 
     addItemDiv.classList.add('add-button');
     document.body.appendChild(appArea);
     appArea.appendChild(sideBar);
     appArea.appendChild(toDoArea);
-    toDoArea.appendChild(addItemDiv);
+    appArea.appendChild(addItemDiv);
+    toDoArea.appendChild(cardList);
+    
     addItemDiv.appendChild(addItem);
+
+    sideBar.appendChild(projectList);
+    sideBar.appendChild(addProject);
 };
 
-export {toDoItems as toDoItems};
+function saveToLocalStorage(arr) {
+    localStorage.clear();
+    localStorage.setItem("items",JSON.stringify(arr));
+};
+
+
+
+export default saveToLocalStorage;

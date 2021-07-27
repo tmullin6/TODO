@@ -34,25 +34,53 @@ body {
 .app-body{
     display: flex;
     margin-top: 15px;
-    height: 300px;
+    height: 400px;
+    width: 80vw;
 
     .list-area {
-        height: 35vw;
-        width: 65vw;
+        height: 30vw;
+        width: 75vw;
+    }
+
+    .card-list {
+        margin-top: 20px;
+        height: inherit;
+        overflow-y: auto;
     }
     
     .add-button {
         cursor: pointer;
-        margin-top: 400px;
-        margin-left: 100%;
+        width: fit-content;
+
+        #add-item {
+            margin-top: 425px;
+        }
+
     }
+
+   
 }
 
 .side-bar {
     color: white;
     border-right: 1px solid white;
-    width: 20vw;
+    width: 30vw;
     height: 35vw;
+
+    .project-list {
+        height: 435px;
+    }
+
+    .add-project{
+        height: 20px;
+        cursor: pointer;
+        background: lighten(@backgroundColor,40%);
+        color: black;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid black;
+
+    }
 }
 
 
@@ -88,34 +116,32 @@ body {
 }
 
 
-.card-list {
-    list-style: none;
-    height: 500px;
-    position: absolute;
-    overflow-y: auto;
-    margin-top: 5vw;
-    margin-left: 20vw;
 
-    .todo-card {
-        display: flex;
-        background-color: lighten(@backgroundColor,25%);
-        color: white;
-        box-shadow: @shadow;
-        justify-content: space-between;
-        padding: 10px 5px 0px 5px;
-        margin: 15px;
-        height: 30px;
-        width: 650px;
+.todo-card {
+    display: flex;
+    background-color: lighten(@backgroundColor,25%);
+    color: white;
+    box-shadow: @shadow;
+    justify-content: space-between;
+    padding: 10px 5px 0px 5px;
+    margin: 15px;
+    height: 30px;
+    width: 650px;
 
-        .completed {
-            color: green;
-            
-        }
+ 
+}
 
-    }
-
-    
-
+.completed {
+    display: flex;
+    color: green;
+    text-decoration: line-through;
+    background: @backgroundColor;
+    justify-content: space-between;
+    padding: 10px 5px 0px 5px;
+    margin: 15px;
+    height: 30px;
+    width: 650px;
+        
 }
 
 /*@keyframes slide-in{
