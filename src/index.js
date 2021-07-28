@@ -1,6 +1,8 @@
 import createToDoItem from './createToDoItem.js';
-import createToDoForm from "./createToDoForm.js";
-import createToDoCards from "./createToDoCards.js";
+import createToDoForm from "./displayToDoForm.js";
+import createToDoCards from "./displayToDoCards.js";
+import displayProjectForm from './displayNewProjectForm.js';
+import createProjectList from './createNewProject.js';
 import './styles.less';
 import add from './2x/outline_add_circle_outline_white_24dp.png'
 
@@ -10,10 +12,12 @@ renderHeader();
 //Renders the body of the web app
 renderAppBody();
 
-//Create array of To-Do List Items
+//Create array of To-Do List Items and Projects
 
 let toDoItems = [];
-let toDoLists = [];
+let toDoLists = ['default'];
+
+
 
 window.onload = ()=>{
     if (localStorage.length > 0) {
@@ -27,6 +31,7 @@ window.onload = ()=>{
 
 //Event Listener that creates the pop up form to enter a new item to the to do list
 const addItem = document.querySelector("#add-item");
+const addProject = document.querySelector(".add-project");
 
 addItem.addEventListener('click', ()=>{
    createToDoForm();
@@ -37,8 +42,6 @@ addItem.addEventListener('click', ()=>{
     submit.addEventListener('click',()=>{
         let newItem = createToDoItem();
         toDoItems.push(newItem);
-
-        console.log(newItem);
         const form = document.querySelector(".todo-form");
         const toDoArea = document.querySelector(".app-body");
        
@@ -51,7 +54,22 @@ addItem.addEventListener('click', ()=>{
 
 });
 
+addProject.addEventListener("click",()=>{
+    displayProjectForm();
 
+    const submit = document.querySelector(".form-submit");
+    const form = document.querySelector(".todo-form");
+    const toDoArea = document.querySelector(".app-body");
+
+    submit.addEventListener("click", ()=>{
+        let newList = createProjectList();
+        toDoLists.push(newList);
+        toDoArea.removeChild(form);
+
+
+        console.log(toDoLists);
+    });
+});
 
 //Function that Creates all DOM Elements for the Web App Header
 function renderHeader (){
