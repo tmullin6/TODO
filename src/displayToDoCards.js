@@ -43,8 +43,18 @@ function createToDoCards (arr) {
                 card.appendChild(buttonDiv);
 
                 complete.addEventListener("click", ()=>{
-                    card.classList.remove("todo-card");
-                    card.classList.add("completed");
+                  
+
+                    if(complete.textContent="complete") {
+                        complete.textContent="In Progress";
+                        card.classList.remove("todo-card");
+                        card.classList.add("completed");
+                    }
+                    else if( complete.textContent="In Progress") {
+                        complete.textContent="complete";
+                        card.classList.add("todo-card");
+                        card.classList.remove("completed");
+                    }
                 });
 
                 remove.addEventListener("click",()=>{

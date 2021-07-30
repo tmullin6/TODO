@@ -24,4 +24,4 @@ const ProjectList = (name, items, displayed)=>{
     return {name, items, displayed, populateList}
 };
 
-export default createProjectList;
+export {createProjectList, ProjectList}

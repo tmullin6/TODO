@@ -69,6 +69,29 @@ body {
 
     .project-list {
         height: 435px;
+        overflow-y: auto;
+
+        .project-card {
+            display: flex;
+            justify-content: space-between;
+            height: fit-content;
+            background:lighten(@backgroundColor,35%);
+            font-size: 20px;
+            margin: 10px;
+            padding: 5px;
+            cursor: pointer;
+
+            .remove-list {
+                display: block;
+                background-color: lighten(@backgroundColor,40%);
+                outline: black solid 1px;
+                border: none;
+                color: red;
+                cursor: pointer;
+                text-shadow: 1px 1px black;
+            }
+
+        }
     }
 
     .add-project{
@@ -94,7 +117,7 @@ body {
     height: fit-content;
     width: 400px;
     border: 1px solid black;
-    box-shadow: @shadow;
+    box-shadow: 5px 11px 15px -7px black;
     background-color: #332940;
     text-align: center;
     margin-top: 4vw;
@@ -139,6 +162,7 @@ body {
     display: flex;
     color: green;
     text-decoration: line-through;
+    outline: green solid 1px;
     background: @backgroundColor;
     justify-content: space-between;
     padding: 10px 5px 0px 5px;
@@ -148,37 +172,8 @@ body {
         
 }
 
-/*@keyframes slide-in{
-
-    0% {
-        width: 0px;
-        display: none;
-    }
-
-    25% {
-        width: 10px;
-        display: none;
-    }
-
-    50% {
-        width: 20px;
-         display: none;
-    }
-    
-    75% {
-        width: 30px;
-        display: none;
-    }
-
-    100% {
-        width:40px;
-        display: inline-block;
-    }
-}*/
 
 .card-buttons{
-    //animation: slide-in;
-    //animation-duration: 0.2s;
     height: 30px;
     width: fit-content;
 
@@ -199,3 +194,4 @@ body {
 
     }
 }
+

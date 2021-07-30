@@ -2,7 +2,8 @@ import createToDoItem from './createToDoItem.js';
 import createToDoForm from "./displayToDoForm.js";
 import createToDoCards from "./displayToDoCards.js";
 import displayProjectForm from './displayNewProjectForm.js';
-import createProjectList from './createNewProject.js';
+import {createProjectList, ProjectList} from './createNewProject.js';
+import displayProjects from './displayProjectLists.js';
 import './styles.less';
 import add from './2x/outline_add_circle_outline_white_24dp.png'
 
@@ -14,18 +15,20 @@ renderAppBody();
 
 //Create array of To-Do List Items and Projects
 
-let toDoItems = [];
-let toDoLists = ['default'];
+let toDoLists = [];
 
+let defaultList = ProjectList("Default");
+toDoLists.push(defaultList);
 
+let displayedList = defaultList;
 
 window.onload = ()=>{
     if (localStorage.length > 0) {
-        toDoItems = JSON.parse(localStorage.getItem("items"));
-        toDoItems.forEach(item=>item.listed=false);
-        console.log(toDoItems);
-        createToDoCards(toDoItems);
+        displayedList.list = JSON.parse(localStorage.getItem("items"));
+        displayedList.list.forEach(item=>item.listed=false);
+        createToDoCards(displayedList.list);
     }
+    displayProjects(toDoLists);
 };
 
 
@@ -41,13 +44,13 @@ addItem.addEventListener('click', ()=>{
     //Takes the information added to the form and creates a new ToDo object and adds it to the array of To-Do Items
     submit.addEventListener('click',()=>{
         let newItem = createToDoItem();
-        toDoItems.push(newItem);
+        displayedList.list.push(newItem);
         const form = document.querySelector(".todo-form");
         const toDoArea = document.querySelector(".app-body");
        
         toDoArea.removeChild(form);
-        createToDoCards(toDoItems);
-        saveToLocalStorage(toDoItems);
+        createToDoCards(displayedList.list);
+        saveToLocalStorage(displayedList.list);
         
         
     });
@@ -65,6 +68,7 @@ addProject.addEventListener("click",()=>{
         let newList = createProjectList();
         toDoLists.push(newList);
         toDoArea.removeChild(form);
+        displayProjects(toDoLists);
 
 
         console.log(toDoLists);
@@ -111,7 +115,6 @@ function renderAppBody() {
    
 
     addProject.textContent = "Add New List";
-    projectList.textContent="Lists here";
 
     const addItem = new Image();
     addItem.src=add;
@@ -137,4 +140,4 @@ function saveToLocalStorage(arr) {
 
 
 
-export default saveToLocalStorage;
+export {saveToLocalStorage, displayedList};
