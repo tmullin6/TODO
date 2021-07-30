@@ -34,25 +34,80 @@ body {
 .app-body{
     display: flex;
     margin-top: 15px;
-    height: 300px;
+    height: 400px;
+    width: 80vw;
 
     .list-area {
-        height: 35vw;
-        width: 65vw;
+        height: 30vw;
+        width: 75vw;
+    }
+
+    .card-list {
+        margin-top: 20px;
+        height: inherit;
+        overflow-y: auto;
     }
     
     .add-button {
         cursor: pointer;
-        margin-top: 400px;
-        margin-left: 100%;
+        width: fit-content;
+
+        #add-item {
+            margin-top: 425px;
+        }
+
     }
+
+   
 }
 
 .side-bar {
     color: white;
     border-right: 1px solid white;
-    width: 20vw;
+    width: 30vw;
     height: 35vw;
+
+    .project-list {
+        height: 435px;
+        overflow-y: auto;
+
+        .project-card {
+            display: flex;
+            justify-content: space-between;
+            height: fit-content;
+            background:lighten(@backgroundColor,35%);
+            font-size: 20px;
+            margin: 10px;
+            padding: 5px;
+            cursor: pointer;
+
+            .remove-list {
+                display: block;
+                background-color: lighten(@backgroundColor,40%);
+                outline: black solid 1px;
+                border: none;
+                color: red;
+                cursor: pointer;
+                text-shadow: 1px 1px black;
+            }
+
+        }
+    }
+
+    .add-project{
+        height: 20px;
+        cursor: pointer;
+        background: lighten(@backgroundColor,40%);
+        color: black;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid black;
+
+        :hover {
+            color: white;
+            border: 1px solid white;
+        }
+    }
 }
 
 
@@ -62,7 +117,7 @@ body {
     height: fit-content;
     width: 400px;
     border: 1px solid black;
-    box-shadow: @shadow;
+    box-shadow: 5px 11px 15px -7px black;
     background-color: #332940;
     text-align: center;
     margin-top: 4vw;
@@ -88,67 +143,37 @@ body {
 }
 
 
-.card-list {
-    list-style: none;
-    height: 500px;
-    position: absolute;
-    overflow-y: auto;
-    margin-top: 5vw;
-    margin-left: 20vw;
 
-    .todo-card {
-        display: flex;
-        background-color: lighten(@backgroundColor,25%);
-        color: white;
-        box-shadow: @shadow;
-        justify-content: space-between;
-        padding: 10px 5px 0px 5px;
-        margin: 15px;
-        height: 30px;
-        width: 650px;
+.todo-card {
+    display: flex;
+    background-color: lighten(@backgroundColor,25%);
+    color: white;
+    box-shadow: @shadow;
+    justify-content: space-between;
+    padding: 10px 5px 0px 5px;
+    margin: 15px;
+    height: 30px;
+    width: 650px;
 
-        .completed {
-            color: green;
-            
-        }
-
-    }
-
-    
-
+ 
 }
 
-/*@keyframes slide-in{
+.completed {
+    display: flex;
+    color: green;
+    text-decoration: line-through;
+    outline: green solid 1px;
+    background: @backgroundColor;
+    justify-content: space-between;
+    padding: 10px 5px 0px 5px;
+    margin: 15px;
+    height: 30px;
+    width: 650px;
+        
+}
 
-    0% {
-        width: 0px;
-        display: none;
-    }
-
-    25% {
-        width: 10px;
-        display: none;
-    }
-
-    50% {
-        width: 20px;
-         display: none;
-    }
-    
-    75% {
-        width: 30px;
-        display: none;
-    }
-
-    100% {
-        width:40px;
-        display: inline-block;
-    }
-}*/
 
 .card-buttons{
-    //animation: slide-in;
-    //animation-duration: 0.2s;
     height: 30px;
     width: fit-content;
 
@@ -169,3 +194,4 @@ body {
 
     }
 }
+
