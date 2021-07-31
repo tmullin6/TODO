@@ -22,8 +22,15 @@ function displayProjects (arr) {
             projectList.appendChild(projectCard);
 
             projectCard.addEventListener("click",()=>{
-                displayedList = arr[i].name;
-                createToDoCards(displayedList.list);
+                const cardList = document.querySelector(".card-list");
+
+                while(cardList.firstChild){
+                    cardList.removeChild(cardList.lastChild);
+                }
+                
+                displayedList = arr[i];
+                
+                createToDoCards(displayedList.items);
             });
 
             remove.addEventListener("click",()=>{

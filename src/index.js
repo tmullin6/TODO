@@ -24,11 +24,12 @@ let displayedList = defaultList;
 
 window.onload = ()=>{
     if (localStorage.length > 0) {
-        displayedList.list = JSON.parse(localStorage.getItem("items"));
-        displayedList.list.forEach(item=>item.listed=false);
-        createToDoCards(displayedList.list);
+        displayedList.items= loadFromLocalStorage("items");
+        displayedList["items"].forEach(item=>item.listed=false);
+        createToDoCards(displayedList.items);
     }
     displayProjects(toDoLists);
+    
 };
 
 
@@ -44,13 +45,13 @@ addItem.addEventListener('click', ()=>{
     //Takes the information added to the form and creates a new ToDo object and adds it to the array of To-Do Items
     submit.addEventListener('click',()=>{
         let newItem = createToDoItem();
-        displayedList.list.push(newItem);
+        displayedList["items"].push(newItem);
         const form = document.querySelector(".todo-form");
         const toDoArea = document.querySelector(".app-body");
        
         toDoArea.removeChild(form);
-        createToDoCards(displayedList.list);
-        saveToLocalStorage(displayedList.list);
+        createToDoCards(displayedList.items);
+        saveToLocalStorage(displayedList.items,toDoLists);
         
         
     });
@@ -69,7 +70,7 @@ addProject.addEventListener("click",()=>{
         toDoLists.push(newList);
         toDoArea.removeChild(form);
         displayProjects(toDoLists);
-
+        saveToLocalStorage(displayedList.items,toDoLists);
 
         console.log(toDoLists);
     });
@@ -133,11 +134,17 @@ function renderAppBody() {
     sideBar.appendChild(addProject);
 };
 
-function saveToLocalStorage(arr) {
+function saveToLocalStorage(items,projects) {
     localStorage.clear();
-    localStorage.setItem("items",JSON.stringify(arr));
+    localStorage.setItem("items",JSON.stringify(items));
+    localStorage.setItem("projects",JSON.stringify(projects));
 };
 
+function loadFromLocalStorage(key) {
+    let data = JSON.parse(localStorage.getItem(key));
+    return data;
+}
 
 
-export {saveToLocalStorage, displayedList};
+
+export default displayedList;

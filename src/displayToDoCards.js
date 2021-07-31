@@ -1,4 +1,3 @@
-import saveToLocalStorage from "./index.js";
 
 //Function that create list of To Do Items from an array of To Do Item Objects
 function createToDoCards (arr) {
@@ -60,17 +59,15 @@ function createToDoCards (arr) {
                 remove.addEventListener("click",()=>{
                     cardList.removeChild(card);
                 
-                    if (arr.length==1) {
-                        arr.pop();
+                    if(arr.length==1) {
+                        arr.pop(); 
                         console.log(arr);
-                    }
-
+                    } 
                     else {
-                        arr.splice(i,1);
+                        arr.slice(i,1);
                         console.log(arr);
                     }
 
-                    saveToLocalStorage(arr);
                 });
 
             });
