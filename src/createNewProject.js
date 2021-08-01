@@ -1,3 +1,5 @@
+import ProjectList from "./ProjectList.js";
+
 function createProjectList() {
     const nameInput = document.querySelector("#name-input");
 
@@ -8,20 +10,4 @@ function createProjectList() {
 
 };
 
-
-const ProjectList = (name, items, displayed)=>{
-    displayed = false;
-    items = [];
-
-    function populateList(arr) {
-       
-        arr.forEach(item =>items.push(item));
-
-        return items
-    }
-  
-
-    return {name, items, displayed, populateList}
-};
-
-export {createProjectList, ProjectList}
+export default createProjectList;

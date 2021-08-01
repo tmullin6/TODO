@@ -1,5 +1,4 @@
-import displayedList from './index.js';
-import createToDoCards from './displayToDoCards.js';
+import displayToDoCards from "./displayToDoCards.js";
 
 function displayProjects (arr) {
 
@@ -27,10 +26,11 @@ function displayProjects (arr) {
                 while(cardList.firstChild){
                     cardList.removeChild(cardList.lastChild);
                 }
+                console.log(arr[i].items);
+                arr[i].items.forEach(item=>item.listed=false);
                 
-                displayedList = arr[i];
+                displayToDoCards(arr[i].items);
                 
-                createToDoCards(displayedList.items);
             });
 
             remove.addEventListener("click",()=>{

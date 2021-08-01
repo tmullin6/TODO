@@ -1,6 +1,6 @@
 
 //Function that create list of To Do Items from an array of To Do Item Objects
-function createToDoCards (arr) {
+function displayToDoCards (arr) {
 
     const cardList= document.querySelector(".card-list");
 
@@ -83,4 +83,4 @@ function createToDoCards (arr) {
 
 };
 
-export default createToDoCards;
+export default displayToDoCards;

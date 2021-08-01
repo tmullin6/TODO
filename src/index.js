@@ -1,8 +1,10 @@
 import createToDoItem from './createToDoItem.js';
 import createToDoForm from "./displayToDoForm.js";
-import createToDoCards from "./displayToDoCards.js";
+import displayToDoCards from "./displayToDoCards.js";
+import addItemToList from './addItemToList.js';
+import ProjectList from './ProjectList.js';
 import displayProjectForm from './displayNewProjectForm.js';
-import {createProjectList, ProjectList} from './createNewProject.js';
+import createProjectList from './createNewProject.js';
 import displayProjects from './displayProjectLists.js';
 import './styles.less';
 import add from './2x/outline_add_circle_outline_white_24dp.png'
@@ -16,19 +18,22 @@ renderAppBody();
 //Create array of To-Do List Items and Projects
 
 let toDoLists = [];
-
+let selectedList;
 let defaultList = ProjectList("Default");
+selectedList = defaultList;
 toDoLists.push(defaultList);
-
-let displayedList = defaultList;
+//:)
 
 window.onload = ()=>{
+    console.log(localStorage);
     if (localStorage.length > 0) {
-        displayedList.items= loadFromLocalStorage("items");
-        displayedList["items"].forEach(item=>item.listed=false);
-        createToDoCards(displayedList.items);
+        toDoLists= JSON.parse(localStorage.getItem("Lists"));
+        toDoLists.forEach(list=>list.displayed=false);
+        displayProjects(toDoLists);
+        displayToDoCards(defaultList.items);
     }
-    displayProjects(toDoLists);
+   
+
     
 };
 
@@ -36,6 +41,7 @@ window.onload = ()=>{
 //Event Listener that creates the pop up form to enter a new item to the to do list
 const addItem = document.querySelector("#add-item");
 const addProject = document.querySelector(".add-project");
+
 
 addItem.addEventListener('click', ()=>{
    createToDoForm();
@@ -45,13 +51,13 @@ addItem.addEventListener('click', ()=>{
     //Takes the information added to the form and creates a new ToDo object and adds it to the array of To-Do Items
     submit.addEventListener('click',()=>{
         let newItem = createToDoItem();
-        displayedList["items"].push(newItem);
+        addItemToList(newItem,selectedList.items);
+        displayToDoCards(selectedList.items);
+        saveToLocalStorage(toDoLists)
         const form = document.querySelector(".todo-form");
         const toDoArea = document.querySelector(".app-body");
        
         toDoArea.removeChild(form);
-        createToDoCards(displayedList.items);
-        saveToLocalStorage(displayedList.items,toDoLists);
         
         
     });
@@ -70,11 +76,20 @@ addProject.addEventListener("click",()=>{
         toDoLists.push(newList);
         toDoArea.removeChild(form);
         displayProjects(toDoLists);
-        saveToLocalStorage(displayedList.items,toDoLists);
-
-        console.log(toDoLists);
+        saveToLocalStorage(toDoLists)
+       
+        for (let i=0;i<toDoLists.length;i++){
+            const project = document.querySelector(".project-list");
+            project.addEventListener("click",()=>{
+                selectedList=toDoLists[i];
+            });
+        }
     });
+
 });
+
+
+
 
 //Function that Creates all DOM Elements for the Web App Header
 function renderHeader (){
@@ -134,17 +149,8 @@ function renderAppBody() {
     sideBar.appendChild(addProject);
 };
 
-function saveToLocalStorage(items,projects) {
+function saveToLocalStorage(toDoLists) {
     localStorage.clear();
-    localStorage.setItem("items",JSON.stringify(items));
-    localStorage.setItem("projects",JSON.stringify(projects));
+    localStorage.setItem("Lists",JSON.stringify(toDoLists));
 };
 
-function loadFromLocalStorage(key) {
-    let data = JSON.parse(localStorage.getItem(key));
-    return data;
-}
-
-
-
-export default displayedList;
