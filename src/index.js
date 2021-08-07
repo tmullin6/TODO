@@ -1,3 +1,4 @@
+import List from './List.js';
 import createToDoItem from './createToDoItem.js';
 import createToDoForm from "./displayToDoForm.js";
 import displayToDoCards from "./displayToDoCards.js";
@@ -5,7 +6,8 @@ import addItemToList from './addItemToList.js';
 import ProjectList from './ProjectList.js';
 import displayProjectForm from './displayNewProjectForm.js';
 import createProjectList from './createNewProject.js';
-import displayProjects from './displayProjectLists.js';
+
+//import displayProjects from './displayProjectLists.js';
 import './styles.less';
 import add from './2x/outline_add_circle_outline_white_24dp.png'
 
@@ -18,24 +20,30 @@ renderAppBody();
 //Create array of To-Do List Items and Projects
 
 let toDoLists = [];
-let selectedList;
-let defaultList = ProjectList("Default");
-selectedList = defaultList;
+let defaultList = new List('Default');
+defaultList.displayList();
 toDoLists.push(defaultList);
+defaultList.setActiveList();
 //:)
 
-window.onload = ()=>{
-    console.log(localStorage);
+/*window.onload = ()=>{
     if (localStorage.length > 0) {
         toDoLists= JSON.parse(localStorage.getItem("Lists"));
         toDoLists.forEach(list=>list.displayed=false);
         displayProjects(toDoLists);
         displayToDoCards(defaultList.items);
-    }
-   
+    } 
 
+        const projectLists = Array.from(document.querySelectorAll(".project-card"));
+
+        projectLists.forEach(list =>
+            list.addEventListener("click", ()=>{
+                let listName = document.querySelector(".name");
+            selectedList=listName.textContent;
+            console.log(selectedList);
+        }));
     
-};
+};*/
 
 
 //Event Listener that creates the pop up form to enter a new item to the to do list
@@ -51,16 +59,45 @@ addItem.addEventListener('click', ()=>{
     //Takes the information added to the form and creates a new ToDo object and adds it to the array of To-Do Items
     submit.addEventListener('click',()=>{
         let newItem = createToDoItem();
-        addItemToList(newItem,selectedList.items);
-        displayToDoCards(selectedList.items);
-        saveToLocalStorage(toDoLists)
+        defaultList.addItem(newItem);
+        displayToDoCards(defaultList.items);
+
         const form = document.querySelector(".todo-form");
         const toDoArea = document.querySelector(".app-body");
+        toDoArea.removeChild(form); 
+
+        const card = document.querySelector(".todo-card");
+
+        card.addEventListener("mouseenter", ()=>{
+
+            let buttonDiv = document.createElement("div");
+                const complete = document.createElement("button");
+                const remove = document.createElement("button");
+
+                buttonDiv.classList.add("card-buttons");
+                complete.classList.add("complete");
+                remove.classList.add("remove")
+                complete.textContent="Complete";
+                remove.textContent="Delete";
+                buttonDiv.appendChild(complete);
+                buttonDiv.appendChild(remove);
+                card.appendChild(buttonDiv);
+
+            toDoArea.removeChild(e.target);
+            defaultList.removeItem();
+    
+        });
+
+        card.addEventListener("mouseleave", ()=>{
+            const buttonDiv = document.querySelector(".card-buttons");
+            card.removeChild(buttonDiv);
+        });
        
-        toDoArea.removeChild(form);
-        
-        
+
+      
     });
+
+   
 
 });
 
@@ -72,21 +109,17 @@ addProject.addEventListener("click",()=>{
     const toDoArea = document.querySelector(".app-body");
 
     submit.addEventListener("click", ()=>{
-        let newList = createProjectList();
-        toDoLists.push(newList);
+        const projectName = document.querySelector("#name-input");
+        let newList = new List(projectName.value);
         toDoArea.removeChild(form);
-        displayProjects(toDoLists);
-        saveToLocalStorage(toDoLists)
-       
-        for (let i=0;i<toDoLists.length;i++){
-            const project = document.querySelector(".project-list");
-            project.addEventListener("click",()=>{
-                selectedList=toDoLists[i];
-            });
-        }
+        newList.displayList();
+        toDoLists.push(newList);
+        
     });
-
 });
+
+
+
 
 
 

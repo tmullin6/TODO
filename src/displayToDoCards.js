@@ -28,18 +28,7 @@ function displayToDoCards (arr) {
             cardList.appendChild(card);
 
             card.addEventListener("mouseenter",()=>{
-                let buttonDiv = document.createElement("div");
-                const complete = document.createElement("button");
-                const remove = document.createElement("button");
-
-                buttonDiv.classList.add("card-buttons");
-                complete.classList.add("complete");
-                remove.classList.add("remove")
-                complete.textContent="Complete";
-                remove.textContent="Delete";
-                buttonDiv.appendChild(complete);
-                buttonDiv.appendChild(remove);
-                card.appendChild(buttonDiv);
+                
 
                 complete.addEventListener("click", ()=>{
                   
@@ -56,7 +45,7 @@ function displayToDoCards (arr) {
                     }
                 });
 
-                remove.addEventListener("click",()=>{
+                /*remove.addEventListener("click",()=>{
                     cardList.removeChild(card);
                 
                     if(arr.length==1) {
@@ -68,14 +57,11 @@ function displayToDoCards (arr) {
                         console.log(arr);
                     }
 
-                });
+                });*/
 
             });
 
-            card.addEventListener("mouseleave", ()=>{
-                const buttonDiv = document.querySelector(".card-buttons");
-                card.removeChild(buttonDiv);
-            });
+            
         };
 
         arr[i].listed = true;

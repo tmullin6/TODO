@@ -12,6 +12,7 @@ function displayProjects (arr) {
             const remove = document.createElement("button");
 
             projectCard.classList.add("project-card");
+            projectName.classList.add("project-name");
             remove.classList.add("remove-list");
             projectName.textContent=arr[i].name;
             remove.textContent="Delete";
