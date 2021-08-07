@@ -1,7 +1,6 @@
-import saveToLocalStorage from "./index.js";
 
 //Function that create list of To Do Items from an array of To Do Item Objects
-function createToDoCards (arr) {
+function displayToDoCards (arr) {
 
     const cardList= document.querySelector(".card-list");
 
@@ -29,18 +28,7 @@ function createToDoCards (arr) {
             cardList.appendChild(card);
 
             card.addEventListener("mouseenter",()=>{
-                let buttonDiv = document.createElement("div");
-                const complete = document.createElement("button");
-                const remove = document.createElement("button");
-
-                buttonDiv.classList.add("card-buttons");
-                complete.classList.add("complete");
-                remove.classList.add("remove")
-                complete.textContent="Complete";
-                remove.textContent="Delete";
-                buttonDiv.appendChild(complete);
-                buttonDiv.appendChild(remove);
-                card.appendChild(buttonDiv);
+                
 
                 complete.addEventListener("click", ()=>{
                   
@@ -57,28 +45,23 @@ function createToDoCards (arr) {
                     }
                 });
 
-                remove.addEventListener("click",()=>{
+                /*remove.addEventListener("click",()=>{
                     cardList.removeChild(card);
                 
-                    if (arr.length==1) {
-                        arr.pop();
+                    if(arr.length==1) {
+                        arr.pop(); 
                         console.log(arr);
-                    }
-
+                    } 
                     else {
-                        arr.splice(i,1);
+                        arr.slice(i,1);
                         console.log(arr);
                     }
 
-                    saveToLocalStorage(arr);
-                });
+                });*/
 
             });
 
-            card.addEventListener("mouseleave", ()=>{
-                const buttonDiv = document.querySelector(".card-buttons");
-                card.removeChild(buttonDiv);
-            });
+            
         };
 
         arr[i].listed = true;
@@ -86,4 +69,4 @@ function createToDoCards (arr) {
 
 };
 
-export default createToDoCards;
+export default displayToDoCards;
