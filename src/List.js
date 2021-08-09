@@ -36,18 +36,25 @@ class List {
     //Delete Item from List
 
     removeItem(item) {
-       
-        let index = this.items.indexOf(item);
-        this.items.slice(index,1);
+    
+        let index = this.items.indexOf(item)
+        if(this.items.length===1){
+            this.items.pop()
+        }
+        else{
+            this.items.splice(index,1);
+        }
 
-    } 
+        return this.items;
+
+    };
     
     //Delete 
     
     removeList(card) {
         const projectList = document.querySelector(".project-list");
         projectList.removeChild(card);
-
+        
         this.displayed=false;
 
     }
