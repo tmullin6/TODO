@@ -2,12 +2,9 @@ import List from './List.js';
 import createToDoItem from './createToDoItem.js';
 import createToDoForm from "./displayToDoForm.js";
 import displayToDoCards from "./displayToDoCards.js";
-import addItemToList from './addItemToList.js';
-import ProjectList from './ProjectList.js';
+import addItemToList from './addItemToList.js'
 import displayProjectForm from './displayNewProjectForm.js';
 import createProjectList from './createNewProject.js';
-
-//import displayProjects from './displayProjectLists.js';
 import './styles.less';
 import add from './2x/outline_add_circle_outline_white_24dp.png'
 
@@ -65,40 +62,8 @@ addItem.addEventListener('click', ()=>{
         const form = document.querySelector(".todo-form");
         const toDoArea = document.querySelector(".app-body");
         toDoArea.removeChild(form); 
-
-        const card = document.querySelector(".todo-card");
-
-        card.addEventListener("mouseenter", ()=>{
-
-            let buttonDiv = document.createElement("div");
-                const complete = document.createElement("button");
-                const remove = document.createElement("button");
-
-                buttonDiv.classList.add("card-buttons");
-                complete.classList.add("complete");
-                remove.classList.add("remove")
-                complete.textContent="Complete";
-                remove.textContent="Delete";
-                buttonDiv.appendChild(complete);
-                buttonDiv.appendChild(remove);
-                card.appendChild(buttonDiv);
-
-            toDoArea.removeChild(e.target);
-            defaultList.removeItem();
-    
-        });
-
-        card.addEventListener("mouseleave", ()=>{
-            const buttonDiv = document.querySelector(".card-buttons");
-            card.removeChild(buttonDiv);
-        });
-       
-
-      
+  
     });
-
-   
-
 });
 
 addProject.addEventListener("click",()=>{
@@ -187,3 +152,4 @@ function saveToLocalStorage(toDoLists) {
     localStorage.setItem("Lists",JSON.stringify(toDoLists));
 };
 
+export default defaultList;

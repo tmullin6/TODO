@@ -1,3 +1,4 @@
+import defaultList from './index';
 
 //Function that create list of To Do Items from an array of To Do Item Objects
 function displayToDoCards (arr) {
@@ -28,40 +29,47 @@ function displayToDoCards (arr) {
             cardList.appendChild(card);
 
             card.addEventListener("mouseenter",()=>{
-                
 
-                complete.addEventListener("click", ()=>{
+                    let buttonDiv = document.createElement("div");
+                    const complete = document.createElement("button");
+                    const remove = document.createElement("button");
+        
+                    buttonDiv.classList.add("card-buttons");
+                    complete.classList.add("complete");
+                    remove.classList.add("remove")
+                    complete.textContent="Complete";
+                    remove.textContent="Delete";
+                    buttonDiv.appendChild(complete);
+                    buttonDiv.appendChild(remove);
+                    card.appendChild(buttonDiv);
+
+                    complete.addEventListener("click", ()=>{
                   
 
-                    if(complete.textContent="complete") {
-                        complete.textContent="In Progress";
-                        card.classList.remove("todo-card");
-                        card.classList.add("completed");
-                    }
-                    else if( complete.textContent="In Progress") {
-                        complete.textContent="complete";
-                        card.classList.add("todo-card");
-                        card.classList.remove("completed");
-                    }
+                        if(complete.textContent="complete") {
+                            complete.textContent="In Progress";
+                            card.classList.remove("todo-card");
+                            card.classList.add("completed");
+                        }
+                        else if( complete.textContent="In Progress") {
+                            complete.textContent="complete";
+                            card.classList.add("todo-card");
+                            card.classList.remove("completed");
+                        }
+                    });
+
+                    remove.addEventListener("click",()=>{
+                        const cardList = document.querySelector(".card-list");
+                        cardList.removeChild(card);
+                        defaultList.removeItem(arr[i]);
+                        console.log(defaultList.items);
+                    })
                 });
-
-                /*remove.addEventListener("click",()=>{
-                    cardList.removeChild(card);
                 
-                    if(arr.length==1) {
-                        arr.pop(); 
-                        console.log(arr);
-                    } 
-                    else {
-                        arr.slice(i,1);
-                        console.log(arr);
-                    }
-
-                });*/
-
-            });
-
-            
+                card.addEventListener("mouseleave", ()=>{
+                    const buttonDiv = document.querySelector(".card-buttons");
+                    card.removeChild(buttonDiv);
+                });  
         };
 
         arr[i].listed = true;
