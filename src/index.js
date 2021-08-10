@@ -1,10 +1,7 @@
 import List from './List.js';
 import createToDoItem from './createToDoItem.js';
 import createToDoForm from "./displayToDoForm.js";
-import displayToDoCards from "./displayToDoCards.js";
-import addItemToList from './addItemToList.js'
 import displayProjectForm from './displayNewProjectForm.js';
-import createProjectList from './createNewProject.js';
 import './styles.less';
 import add from './2x/outline_add_circle_outline_white_24dp.png'
 
@@ -18,9 +15,10 @@ renderAppBody();
 
 let toDoLists = [];
 let defaultList = new List('Default');
-defaultList.displayList();
 toDoLists.push(defaultList);
 defaultList.setActiveList();
+defaultList.displayLists(toDoLists);
+
 //:)
 
 /*window.onload = ()=>{
@@ -57,7 +55,7 @@ addItem.addEventListener('click', ()=>{
     submit.addEventListener('click',()=>{
         let newItem = createToDoItem();
         defaultList.addItem(newItem);
-        displayToDoCards(defaultList.items);
+        defaultList.displayItems(defaultList.items);
 
         const form = document.querySelector(".todo-form");
         const toDoArea = document.querySelector(".app-body");
@@ -77,16 +75,12 @@ addProject.addEventListener("click",()=>{
         const projectName = document.querySelector("#name-input");
         let newList = new List(projectName.value);
         toDoArea.removeChild(form);
-        newList.displayList();
         toDoLists.push(newList);
+        newList.displayLists(toDoLists);
+        console.log(toDoLists);
         
     });
 });
-
-
-
-
-
 
 
 //Function that Creates all DOM Elements for the Web App Header
@@ -151,5 +145,3 @@ function saveToLocalStorage(toDoLists) {
     localStorage.clear();
     localStorage.setItem("Lists",JSON.stringify(toDoLists));
 };
-
-export default defaultList;
