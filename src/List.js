@@ -8,7 +8,7 @@ class List {
     }
 
     displayLists(listArr){
-
+      
         for (let i=0; i<listArr.length; i++){
 
             if(!listArr[i].isListed) {
@@ -35,10 +35,27 @@ class List {
                 });
 
                 projectCard.addEventListener("click",()=>{
+                    const cardList = document.querySelector(".card-list");
+
+                    projectCard.classList.remove(".project-card");
+                    projectCard.classList.add(".project-selected");
+
+                    while(cardList.firstChild){
+                        cardList.removeChild(cardList.lastChild);
+                    };
+
                     for (let k=0;k<listArr.length; k++){
                         listArr[k].isDisplayed=false;
                     }
+
                     listArr[i].setActiveList();
+
+                    listArr.forEach( list => ()=>{
+                        if (list.isDisplayed=true) {
+                            displayItems(list.items);
+                        };
+                    });
+
                     console.log(listArr);
                 }); 
 
@@ -62,6 +79,12 @@ class List {
     displayItems(list) {
 
         const cardList= document.querySelector(".card-list");
+        list.forEach(item => item.listed=false);
+
+        while(cardList.firstChild){
+            cardList.removeChild(cardList.lastChild);
+        }
+
 
    
         for (let i =0; i<list.length;i++){
