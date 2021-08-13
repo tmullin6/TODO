@@ -73,18 +73,20 @@ body {
 
         .project-card {
             display: flex;
-            justify-content: space-between;
             height: fit-content;
             background:lighten(@backgroundColor,35%);
             
             margin: 10px;
             padding: 5px;
-            cursor: pointer;
+            
+            
+            
 
             .project-name{
                 font-size: 20px;
+                width: 100%;
                 color: black;
-                
+                cursor: pointer;
             }
 
             .remove-list {
@@ -100,6 +102,36 @@ body {
             
 
         }
+    }
+
+    .project-selected {
+        border: 2px solid blue;
+        color: blue;
+        font-weight: bold;
+        display: flex;
+        height: fit-content;
+        background:lighten(@backgroundColor,35%);
+        margin: 10px;
+        padding: 5px;
+
+        .project-name{
+            font-size: 20px;
+            width: 100%;
+            color: black;
+            cursor: pointer;
+        }
+
+
+        .remove-list {
+            display: block;
+            background-color: lighten(@backgroundColor,40%);
+            outline: black solid 1px;
+            border: none;
+            color: red;
+            cursor: pointer;
+            text-shadow: 1px 1px black;
+        }
+      
     }
 
     .add-project{
@@ -118,11 +150,6 @@ body {
     }
 }
 
-.project-selected {
-    border: 2px solid blue;
-    color: blue;
-    font-weight: bold;
-}
 
 
 .todo-form {

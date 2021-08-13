@@ -10,31 +10,28 @@ Display.appBody();
 //Create array of To-Do List Items and Projects
 
 let toDoLists = [];
-let defaultList = new List('Default');
-toDoLists.push(defaultList);
-defaultList.setActiveList();
-defaultList.displayLists(toDoLists);
+let selectedList;
 
+let defaultList = new List('Default');
+defaultList.isDisplayed = true;
 //:)
 
-/*window.onload = ()=>{
-    if (localStorage.length > 0) {
-        toDoLists= JSON.parse(localStorage.getItem("Lists"));
-        toDoLists.forEach(list=>list.displayed=false);
-        displayProjects(toDoLists);
-        displayToDoCards(defaultList.items);
-    } 
 
-        const projectLists = Array.from(document.querySelectorAll(".project-card"));
 
-        projectLists.forEach(list =>
-            list.addEventListener("click", ()=>{
-                let listName = document.querySelector(".name");
-            selectedList=listName.textContent;
-            console.log(selectedList);
-        }));
+if (localStorage.length > 0) {
+
+    toDoLists= JSON.parse(localStorage.getItem("Lists"));
+    toDoLists.forEach(list => list.isListed=false);
+    defaultList.displayLists(toDoLists);
+    defaultList.displayItems(defaultList.items);
+    console.log(toDoLists);
+} 
+else {
+    toDoLists.push(defaultList);
+    defaultList.displayLists(toDoLists);
+}
     
-};*/
+
 
 
 //Event Listener that creates the pop up form to enter a new item to the to do list
@@ -43,20 +40,24 @@ const addProject = document.querySelector(".add-project");
 
 
 addItem.addEventListener('click', ()=>{
-    let selectedList;
+   
+    Display.toDoForm();
+    const submit = document.querySelector('.form-submit');
+
 
     for (let i =0;i<toDoLists.length;i++){
-        if(toDoLists[i].isDisplayed=true){
+        
+        if(toDoLists[i].isDisplayed==true){
+
             selectedList = toDoLists[i];
+            console.log(selectedList);
         };
     };
 
-   Display.toDoForm();
-
-   const submit = document.querySelector('.form-submit');
-
+   
     //Takes the information added to the form and creates a new ToDo object and adds it to the array of To-Do Items
     submit.addEventListener('click',()=>{
+
         let newItem = createToDoItem();
         selectedList.addItem(newItem);
         selectedList.displayItems(selectedList.items);
@@ -64,11 +65,13 @@ addItem.addEventListener('click', ()=>{
         const form = document.querySelector(".todo-form");
         const toDoArea = document.querySelector(".app-body");
         toDoArea.removeChild(form); 
+        saveToLocalStorage(toDoLists);
   
     });
 });
 
 addProject.addEventListener("click",()=>{
+
     Display.projectForm();
 
     const submit = document.querySelector(".form-submit");
@@ -81,13 +84,15 @@ addProject.addEventListener("click",()=>{
         toDoArea.removeChild(form);
         toDoLists.push(newList);
         newList.displayLists(toDoLists);
-        console.log(toDoLists);
+        saveToLocalStorage(toDoLists);
         
     });
 });
 
 
-function saveToLocalStorage(toDoLists) {
+function saveToLocalStorage(lists) {
     localStorage.clear();
-    localStorage.setItem("Lists",JSON.stringify(toDoLists));
+    localStorage.setItem("Lists",JSON.stringify(lists));
 };
+
+export default saveToLocalStorage;

@@ -1,3 +1,5 @@
+import saveToLocalStorage from "./index.js";
+
 class List {
 
     constructor(name){
@@ -8,7 +10,7 @@ class List {
     }
 
     displayLists(listArr){
-      
+
         for (let i=0; i<listArr.length; i++){
 
             if(!listArr[i].isListed) {
@@ -25,50 +27,55 @@ class List {
                 remove.textContent="Delete";
 
                 projectCard.appendChild(projectName);
-                projectCard.appendChild(remove);
                 projectList.appendChild(projectCard);
 
+                if(i>0){
+
+                projectCard.appendChild(remove);
+
+                }
+                
+
                 remove.addEventListener("click",()=>{
+                    const cardList = document.querySelector(".card-list");
+
+                    if(listArr[i].isDisplayed == true){
+
+                    while(cardList.firstChild){
+                        cardList.removeChild(cardList.lastChild);
+                    };
+                }
                     projectList.removeChild(projectCard);
                     this.removeItem(listArr[i],listArr);
+                    this.displayLists(listArr);
+                    //saveToLocalStorage(listArr);
                     console.log(listArr);
                 });
 
-                projectCard.addEventListener("click",()=>{
+                projectName.addEventListener("click",()=>{
                     const cardList = document.querySelector(".card-list");
-
-                    projectCard.classList.remove(".project-card");
-                    projectCard.classList.add(".project-selected");
 
                     while(cardList.firstChild){
                         cardList.removeChild(cardList.lastChild);
                     };
 
+                    
                     for (let k=0;k<listArr.length; k++){
+
                         listArr[k].isDisplayed=false;
+                         
                     }
 
-                    listArr[i].setActiveList();
-
-                    listArr.forEach( list => ()=>{
-                        if (list.isDisplayed=true) {
-                            displayItems(list.items);
-                        };
-                    });
-
-                    console.log(listArr);
+                    
+                    this.isDisplayed=true;
+                    
+                    this.displayItems(listArr[i].items);
                 }); 
-
-
             }
             listArr[i].isListed=true;
         }
-
     }
 
-    setActiveList(){
-            this.isDisplayed=true; 
-    }
 
     addItem(item){
         this.items.push(item);
@@ -143,6 +150,7 @@ class List {
                     remove.addEventListener("click",()=>{
                         cardList.removeChild(card);
                         this.removeItem(list[i],list);
+                        //saveToLocalStorage(list);
                         console.log(this.items);
                     })
                 });
@@ -158,9 +166,6 @@ class List {
 
     };
     
-
-    //Delete Item from List
-
     removeItem(item,list) {
     
         let index = list.indexOf(item)
@@ -170,21 +175,9 @@ class List {
         else{
             list.splice(index,1);
         }
-
         return list;
-
-
     };
-    
-    //Delete 
-    
-    removeList(card) {
-        const projectList = document.querySelector(".project-list");
-        projectList.removeChild(card);
-        
-        this.displayed=false;
 
-    }
 
 }
 

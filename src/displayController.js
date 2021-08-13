@@ -37,7 +37,6 @@ const Display = (()=>{
         projectList.classList.add("project-list");
         addProject.classList.add("add-project");
        
-    
         addProject.textContent = "Add New List";
     
         const addItem = new Image();
