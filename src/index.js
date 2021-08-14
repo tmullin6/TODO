@@ -11,24 +11,27 @@ Display.appBody();
 
 let toDoLists = [];
 let selectedList;
-
-let defaultList = new List('Default');
-defaultList.isDisplayed = true;
 //:)
-
-
 
 if (localStorage.length > 0) {
 
     toDoLists= JSON.parse(localStorage.getItem("Lists"));
-    toDoLists.forEach(list => list.isListed=false);
-    defaultList.displayLists(toDoLists);
-    defaultList.displayItems(defaultList.items);
+
+    for (let i=0;i<toDoLists.length;i++){
+
+    toDoLists[i].isListed=false;
+    toDoLists[0].displayLists(toDoLists);
+    toDoLists[0].isDisplayed = true;
+    toDoLists[0].displayItems(toDoLists[0].items);
     console.log(toDoLists);
+    }
 } 
 else {
+    let defaultList = new List('Default');
+    defaultList.isDisplayed = true;
     toDoLists.push(defaultList);
     defaultList.displayLists(toDoLists);
+    console.log(toDoLists);
 }
     
 
@@ -88,7 +91,6 @@ addProject.addEventListener("click",()=>{
         
     });
 });
-
 
 function saveToLocalStorage(lists) {
     localStorage.clear();

@@ -48,7 +48,7 @@ class List {
                     projectList.removeChild(projectCard);
                     this.removeItem(listArr[i],listArr);
                     this.displayLists(listArr);
-                    //saveToLocalStorage(listArr);
+                    saveToLocalStorage(listArr);
                     console.log(listArr);
                 });
 
@@ -150,6 +150,7 @@ class List {
                     remove.addEventListener("click",()=>{
                         cardList.removeChild(card);
                         this.removeItem(list[i],list);
+                        this.displayItems(list);
                         //saveToLocalStorage(list);
                         console.log(this.items);
                     })
