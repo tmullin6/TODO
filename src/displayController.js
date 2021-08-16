@@ -1,7 +1,9 @@
 import add from './2x/outline_add_circle_outline_white_24dp.png';
 
+//Display Module that renders app layout and forms to the page
 const Display = (()=>{
 
+    //Displays the web app header.
     const header = ()=> {
         const header = document.createElement('div');
         const title = document.createElement('div');
@@ -19,6 +21,7 @@ const Display = (()=>{
         header.appendChild(git);
     };
 
+    //Displays the main body of the web app.
     const appBody =()=>{
 
         const appArea = document.createElement('div');
@@ -56,6 +59,7 @@ const Display = (()=>{
         sideBar.appendChild(addProject);
     };
 
+    //Displays a form for the user to input To-Do Item information.
     const toDoForm =()=> {
         const appArea = document.querySelector('.app-body');
 
@@ -109,7 +113,8 @@ const Display = (()=>{
         todoForm.appendChild(enterDate);
         todoForm.appendChild(submit);
     };
-
+    
+    //Displays a form for the user to input informaion for new List objects
     const projectForm= ()=>{
         const appArea = document.querySelector('.app-body');
 
@@ -149,8 +154,7 @@ const Display = (()=>{
         projectForm.appendChild(submit);
 
     };
-
-    
+  
     return{header,appBody,toDoForm,projectForm}
 })();
 

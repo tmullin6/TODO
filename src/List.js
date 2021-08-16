@@ -1,5 +1,6 @@
-import saveToLocalStorage from "./index.js";
+import {saveToLocalStorage,toDoLists} from "./index.js";
 
+//List class for all user created To-Do Lists
 class List {
 
     constructor(name){
@@ -151,8 +152,7 @@ class List {
                         cardList.removeChild(card);
                         this.removeItem(list[i],list);
                         this.displayItems(list);
-                        //saveToLocalStorage(list);
-                        console.log(this.items);
+                        saveToLocalStorage(toDoLists);
                     })
                 });
                 
