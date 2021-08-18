@@ -49,9 +49,6 @@ const addProject = document.querySelector(".add-project");
 
 addItem.addEventListener('click', ()=>{
    
-    Display.toDoForm();
-    const submit = document.querySelector('.form-submit');
-
     //Find which list has been selected by the user and set that list as the active list for adding new items.
     for (let i =0;i<toDoLists.length;i++){
         
@@ -62,6 +59,9 @@ addItem.addEventListener('click', ()=>{
         };
     };
 
+    Display.toDoForm(selectedList.name);
+
+    const submit = document.querySelector('.form-submit');
    
     /*Takes the user input information and creates a new ToDo object and adds it to the user selected list. 
     After submit, the lists are saved to user's local storage*/
@@ -101,6 +101,7 @@ addProject.addEventListener("click",()=>{
         saveToLocalStorage(toDoLists); 
     });
 });
+
 
 //Function that takes an array and saves the information to local storage.
 function saveToLocalStorage(lists) {

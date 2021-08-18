@@ -32,20 +32,24 @@ class List {
 
                 if(i>0){
 
-                projectCard.appendChild(remove);
+                    projectCard.addEventListener("mouseenter",()=>{
+                        projectCard.appendChild(remove);
+                    });
+                    
+                    projectCard.addEventListener("mouseleave",()=>{
+                        projectCard.removeChild(remove);
+                    });
 
-                }
+                };
                 
 
                 remove.addEventListener("click",()=>{
                     const cardList = document.querySelector(".card-list");
 
-                    if(listArr[i].isDisplayed == true){
-
                     while(cardList.firstChild){
                         cardList.removeChild(cardList.lastChild);
                     };
-                }
+                
                     projectList.removeChild(projectCard);
                     this.removeItem(listArr[i],listArr);
                     this.displayLists(listArr);
@@ -60,19 +64,16 @@ class List {
                         cardList.removeChild(cardList.lastChild);
                     };
 
-                    
-                    for (let k=0;k<listArr.length; k++){
-
-                        listArr[k].isDisplayed=false;
+                    listArr.forEach( list => list.isDisplayed=false);
                          
-                    }
+                    projectCard.classList.add("project-selected");
 
-                    
                     this.isDisplayed=true;
                     
-                    this.displayItems(listArr[i].items);
+                    this.displayItems(this.items);
                 }); 
             }
+
             listArr[i].isListed=true;
         }
     }
@@ -80,8 +81,7 @@ class List {
 
     addItem(item){
         this.items.push(item);
-        console.log(this.items);
-    }
+    };
 
 
     displayItems(list) {
@@ -93,8 +93,6 @@ class List {
             cardList.removeChild(cardList.lastChild);
         }
 
-
-   
         for (let i =0; i<list.length;i++){
 
             if (!list[i].listed) {
@@ -178,8 +176,6 @@ class List {
         }
         return list;
     };
-
-
 }
 
 export default List
