@@ -26,6 +26,7 @@ const Display = (()=>{
 
         const appArea = document.createElement('div');
         const sideBar = document.createElement('div');
+        const projectTitles = document.createElement("p");
         const projectList = document.createElement("div");
         const addProject = document.createElement('div');
         const toDoArea = document.createElement('div');
@@ -37,9 +38,11 @@ const Display = (()=>{
         cardList.classList.add("card-list");
     
         sideBar.classList.add("side-bar");
+        projectTitles.classList.add("project-list-title");
         projectList.classList.add("project-list");
         addProject.classList.add("add-project");
        
+        projectTitles.textContent="Your Lists:"
         addProject.textContent = "Add New List";
     
         const addItem = new Image();
@@ -55,16 +58,18 @@ const Display = (()=>{
         
         addItemDiv.appendChild(addItem);
     
+        sideBar.appendChild(projectTitles);
         sideBar.appendChild(projectList);
         sideBar.appendChild(addProject);
     };
 
     //Displays a form for the user to input To-Do Item information.
-    const toDoForm =()=> {
+    const toDoForm =(list)=> {
         const appArea = document.querySelector('.app-body');
 
         //Creates all DOM Elements of the Input Form
         const todoForm = document.createElement("div");
+        const title = document.createElement("p");
         const name = document.createElement('p');
         const enterName = document.createElement('input');
         const desc = document.createElement('p');
@@ -74,11 +79,13 @@ const Display = (()=>{
         const submit = document.createElement('button');
     
         //Text Content for Input Headers
+        title.textContent=`Add Task to ${list}`;
         name.textContent="Task:"
         desc.textContent="Description:";
         dueDate.textContent="Due Date:";
         submit.textContent="Submit";
     
+        title.classList.add("form-text");
         name.classList.add("form-text");
         desc.classList.add("form-text");
         dueDate.classList.add("form-text");
@@ -105,6 +112,7 @@ const Display = (()=>{
     
         appArea.appendChild(todoForm);
     
+        todoForm.appendChild(title);
         todoForm.appendChild(name);
         todoForm.appendChild(enterName);
         todoForm.appendChild(desc);
