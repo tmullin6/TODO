@@ -1,11 +1,13 @@
 import List from './List.js';
 import Display from './displayController.js';
 import createToDoItem from './createToDoItem.js';
+
 import './styles.less';
 
 //Render Web App Layout
 Display.header();
-Display.appBody();
+Display.appBody(); 
+
 
 //Create an array to save List objects
 let toDoLists = [];
@@ -20,13 +22,15 @@ if (localStorage.length > 0) {
     for (let i=0; i<storedLists.length; i++){
 
         let newList= new List(`${storedLists[i].name}`);
+        newList.isDisplayed=false;
         newList.items = storedLists[i].items;
         toDoLists.push(newList);
     };
 
     toDoLists[0].isDisplayed = true;
     toDoLists[0].displayLists(toDoLists);
-    toDoLists[0].displayItems(toDoLists[0].items);  
+    toDoLists[0].displayItems(toDoLists[0].items); 
+   
 }
 
 //If no lists exist in storage, create a default list and add it to the page.
@@ -36,9 +40,10 @@ else {
     defaultList.isDisplayed=true;
     toDoLists.push(defaultList);
     defaultList.displayLists(toDoLists);
-    
 };
     
+
+
 
 
 
@@ -68,6 +73,8 @@ addItem.addEventListener('click', ()=>{
     submit.addEventListener('click',()=>{
 
         let newItem = createToDoItem();
+       
+
         selectedList.addItem(newItem);
         selectedList.displayItems(selectedList.items);
 

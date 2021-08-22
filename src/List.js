@@ -22,6 +22,8 @@ class List {
                 const remove = document.createElement("button");
 
                 projectCard.classList.add("project-card");
+               
+              
                 projectName.classList.add("project-name");
                 remove.classList.add("remove-list");
                 projectName.textContent = listArr[i].name;
@@ -30,8 +32,11 @@ class List {
                 projectCard.appendChild(projectName);
                 projectList.appendChild(projectCard);
 
-                if(i>0){
+                if(i==0){
+                    projectCard.classList.add("project-selected");
+                }
 
+                if(i>0){
                     projectCard.addEventListener("mouseenter",()=>{
                         projectCard.appendChild(remove);
                     });
@@ -59,18 +64,25 @@ class List {
 
                 projectName.addEventListener("click",()=>{
                     const cardList = document.querySelector(".card-list");
+                    const projects =document.querySelectorAll(".project-card");
 
                     while(cardList.firstChild){
                         cardList.removeChild(cardList.lastChild);
                     };
 
-                    listArr.forEach( list => list.isDisplayed=false);
-                         
-                    projectCard.classList.add("project-selected");
+                    listArr.forEach(list => list.isDisplayed=false);
+                  
+                    for (let k=0; k<projects.length;k++) {
+                        projects[k].classList.remove("project-selected");
+                    }
 
-                    this.isDisplayed=true;
+                    projectCard.classList.add("project-selected");
+                 
+                   
+                    listArr[i].isDisplayed=true;
                     
-                    this.displayItems(this.items);
+                    listArr[i].displayItems(listArr[i].items);
+                    
                 }); 
             }
 
