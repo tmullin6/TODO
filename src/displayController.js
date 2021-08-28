@@ -1,180 +1,170 @@
-import add from './2x/outline_add_circle_outline_white_24dp.png';
-import githubIcon from './GitHub-Mark-Light-32px.png';
+import add from "./2x/outline_add_circle_outline_white_24dp.png";
+import githubIcon from "./GitHub-Mark-Light-32px.png";
 
 //Display Module that renders app layout and forms to the page
-const Display = (()=>{
+const Display = (() => {
+  //Displays the web app header.
+  const header = () => {
+    const header = document.createElement("div");
+    const title = document.createElement("div");
+    const git = document.createElement("div");
+    const gitLink = document.createElement("a");
 
-    //Displays the web app header.
-    const header = ()=> {
-        const header = document.createElement('div');
-        const title = document.createElement('div');
-        const git = document.createElement('div');
-        const gitLink = document.createElement('a');
+    header.classList.add("header");
+    title.classList.add("head-text");
+    git.classList.add("git-text");
 
-        header.classList.add("header");
-        title.classList.add("head-text");
-        git.classList.add("git-text");
+    title.textContent = "List-it";
+    git.textContent = "Check out my github for more  ";
 
-        title.textContent="List-it";
-        git.textContent="Check out my github for more  ";
+    const gitIcon = new Image();
+    gitIcon.src = githubIcon;
+    gitIcon.id = "git-icon";
 
-        const gitIcon = new Image();
-        gitIcon.src=githubIcon;
-        gitIcon.id="git-icon";
+    gitLink.href = "https://github.com/tmullin6";
 
-        gitLink.href="https://github.com/tmullin6";
+    document.body.appendChild(header);
+    header.appendChild(title);
+    header.appendChild(git);
+    gitLink.appendChild(gitIcon);
+    git.appendChild(gitLink);
+  };
 
-        document.body.appendChild(header);
-        header.appendChild(title);
-        header.appendChild(git);
-        gitLink.appendChild(gitIcon);
-        git.appendChild(gitLink);
-        
-    };
+  //Displays the main body of the web app.
+  const appBody = () => {
+    const appArea = document.createElement("div");
+    const sideBar = document.createElement("div");
+    const projectTitles = document.createElement("p");
+    const projectList = document.createElement("div");
+    const addProject = document.createElement("div");
+    const toDoArea = document.createElement("div");
 
-    //Displays the main body of the web app.
-    const appBody =()=>{
+    const cardList = document.createElement("div");
+    const addItemDiv = document.createElement("div");
 
-        const appArea = document.createElement('div');
-        const sideBar = document.createElement('div');
-        const projectTitles = document.createElement("p");
-        const projectList = document.createElement("div");
-        const addProject = document.createElement('div');
-        const toDoArea = document.createElement('div');
-    
-        const cardList = document.createElement('div');
-        const addItemDiv = document.createElement('div');
-    
-        appArea.classList.add("app-body");
-        toDoArea.classList.add("list-area");
-        cardList.classList.add("card-list");
-    
-        sideBar.classList.add("side-bar");
-        projectTitles.classList.add("project-list-title");
-        projectList.classList.add("project-list");
-        addProject.classList.add("add-project");
-       
-       
-        projectTitles.textContent="Your Lists:"
-        addProject.textContent = "Add New List";
-    
-        const addItem = new Image();
-        addItem.src=add;
-        addItem.id ="add-item";
-    
-        addItemDiv.classList.add('add-button');
-        document.body.appendChild(appArea);
-        appArea.appendChild(sideBar);
-        appArea.appendChild(toDoArea);
-        appArea.appendChild(addItemDiv);
-        toDoArea.appendChild(cardList);
-        addItemDiv.appendChild(addItem);
-    
-        sideBar.appendChild(projectTitles);
-        sideBar.appendChild(projectList);
-        sideBar.appendChild(addProject);
-    };
+    appArea.classList.add("app-body");
+    toDoArea.classList.add("list-area");
+    cardList.classList.add("card-list");
 
-    //Displays a form for the user to input To-Do Item information.
-    const toDoForm =(list)=> {
-        const appArea = document.querySelector('.app-body');
+    sideBar.classList.add("side-bar");
+    projectTitles.classList.add("project-list-title");
+    projectList.classList.add("project-list");
+    addProject.classList.add("add-project");
 
-        //Creates all DOM Elements of the Input Form
-        const todoForm = document.createElement("div");
-        const title = document.createElement("p");
-        const name = document.createElement('p');
-        const enterName = document.createElement('input');
-        const desc = document.createElement('p');
-        const enterDesc = document.createElement('input');
-        const dueDate = document.createElement('p');
-        const enterDate = document.createElement('input');
-        const submit = document.createElement('button');
-    
-        //Text Content for Input Headers
-        title.textContent=`Add Task to ${list}`;
-        name.textContent="Task:"
-        desc.textContent="Description:";
-        dueDate.textContent="Select Due Date:";
-        submit.textContent="Submit";
-    
-        title.classList.add("form-text");
-        name.classList.add("form-text");
-        desc.classList.add("form-text");
-        dueDate.classList.add("form-text");
-    
-        //Set Type, Placeholder text, and Id for each input element
-        enterName.type="input";
-        enterName.placeholder = "Enter Task";
-        enterName.id = "name-input";
-    
-        enterDesc.type="input";
-        enterDesc.placeholder = "Description (optional)";
-        enterDesc.id = "desc-input";
-    
-        enterDate.type="date";
-        enterDate.id = "date-input";
-    
-        submit.type='submit';
-        submit.classList.add('form-submit');
-        
-       
-    
-        todoForm.classList.add('todo-form');
-    
-        appArea.appendChild(todoForm);
-    
-        todoForm.appendChild(title);
-        todoForm.appendChild(name);
-        todoForm.appendChild(enterName);
-        todoForm.appendChild(desc);
-        todoForm.appendChild(enterDesc);
-        todoForm.appendChild(dueDate);
-        todoForm.appendChild(enterDate);
-        todoForm.appendChild(submit);
-    };
-    
-    //Displays a form for the user to input informaion for new List objects
-    const projectForm= ()=>{
-        const appArea = document.querySelector('.app-body');
+    projectTitles.textContent = "Your Lists:";
+    addProject.textContent = "Add New List";
 
-        //Creates all DOM Elements of the Input Form
-        const projectForm = document.createElement("div");
-        const title = document.createElement('p');
-        const name = document.createElement('p');
-        const enterName = document.createElement('input');
-        const submit = document.createElement('button');
+    const addItem = new Image();
+    addItem.src = add;
+    addItem.id = "add-item";
 
-        //Text Content for Input Headers
-        title.textContent="Enter New To Do List"
-        name.textContent="Name:"
-        submit.textContent="Submit";
+    addItemDiv.classList.add("add-button");
+    document.body.appendChild(appArea);
+    appArea.appendChild(sideBar);
+    appArea.appendChild(toDoArea);
+    appArea.appendChild(addItemDiv);
+    toDoArea.appendChild(cardList);
+    addItemDiv.appendChild(addItem);
 
-        title.classList.add("form-text");
-        name.classList.add("form-text");
+    sideBar.appendChild(projectTitles);
+    sideBar.appendChild(projectList);
+    sideBar.appendChild(addProject);
+  };
 
-        //Set Type, Placeholder text, and Id for each input element
-        enterName.type="input";
-        enterName.placeholder = "Enter List Name";
-        enterName.id = "name-input";
+  //Displays a form for the user to input To-Do Item information.
+  const toDoForm = (list) => {
+    const appArea = document.querySelector(".app-body");
 
+    //Creates all DOM Elements of the Input Form
+    const todoForm = document.createElement("div");
+    const title = document.createElement("p");
+    const name = document.createElement("p");
+    const enterName = document.createElement("input");
+    const desc = document.createElement("p");
+    const enterDesc = document.createElement("input");
+    const dueDate = document.createElement("p");
+    const enterDate = document.createElement("input");
+    const submit = document.createElement("button");
 
-        submit.type='submit';
-        submit.classList.add('form-submit');
-    
-   
+    //Text Content for Input Headers
+    title.textContent = `Add Task to ${list}`;
+    name.textContent = "Task:";
+    desc.textContent = "Description:";
+    dueDate.textContent = "Select Due Date:";
+    submit.textContent = "Submit";
 
-        projectForm.classList.add('todo-form');
+    title.classList.add("form-text");
+    name.classList.add("form-text");
+    desc.classList.add("form-text");
+    dueDate.classList.add("form-text");
 
-        appArea.appendChild(projectForm);
+    //Set Type, Placeholder text, and Id for each input element
+    enterName.type = "input";
+    enterName.placeholder = "Enter Task";
+    enterName.id = "name-input";
 
-        projectForm.appendChild(title);
-        projectForm.appendChild(name);
-        projectForm.appendChild(enterName);
-        projectForm.appendChild(submit);
+    enterDesc.type = "input";
+    enterDesc.placeholder = "Description (optional)";
+    enterDesc.id = "desc-input";
 
-    };
-  
-    return{header,appBody,toDoForm,projectForm}
+    enterDate.type = "date";
+    enterDate.id = "date-input";
+
+    submit.type = "submit";
+    submit.classList.add("form-submit");
+
+    todoForm.classList.add("todo-form");
+
+    appArea.appendChild(todoForm);
+
+    todoForm.appendChild(title);
+    todoForm.appendChild(name);
+    todoForm.appendChild(enterName);
+    todoForm.appendChild(desc);
+    todoForm.appendChild(enterDesc);
+    todoForm.appendChild(dueDate);
+    todoForm.appendChild(enterDate);
+    todoForm.appendChild(submit);
+  };
+
+  //Displays a form for the user to input informaion for new List objects
+  const projectForm = () => {
+    const appArea = document.querySelector(".app-body");
+
+    //Creates all DOM Elements of the Input Form
+    const projectForm = document.createElement("div");
+    const title = document.createElement("p");
+    const name = document.createElement("p");
+    const enterName = document.createElement("input");
+    const submit = document.createElement("button");
+
+    //Text Content for Input Headers
+    title.textContent = "Enter New To Do List";
+    name.textContent = "Name:";
+    submit.textContent = "Submit";
+
+    title.classList.add("form-text");
+    name.classList.add("form-text");
+
+    //Set Type, Placeholder text, and Id for each input element
+    enterName.type = "input";
+    enterName.placeholder = "Enter List Name";
+    enterName.id = "name-input";
+
+    submit.type = "submit";
+    submit.classList.add("form-submit");
+
+    projectForm.classList.add("todo-form");
+
+    appArea.appendChild(projectForm);
+
+    projectForm.appendChild(title);
+    projectForm.appendChild(name);
+    projectForm.appendChild(enterName);
+    projectForm.appendChild(submit);
+  };
+
+  return { header, appBody, toDoForm, projectForm };
 })();
 
 export default Display;
