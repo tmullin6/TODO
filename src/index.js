@@ -23,13 +23,16 @@ if (localStorage.length > 0) {
 
         let newList= new List(`${storedLists[i].name}`);
         newList.isDisplayed=false;
+        newList.isListed=false;
         newList.items = storedLists[i].items;
         toDoLists.push(newList);
     };
-
-    toDoLists[0].isDisplayed = true;
-    toDoLists[0].displayLists(toDoLists);
-    toDoLists[0].displayItems(toDoLists[0].items); 
+    
+    let defaultList = toDoLists[0];
+    defaultList.isDisplayed = true;
+    defaultList.displayLists(toDoLists);
+    defaultList.displayItems(defaultList.items);
+ 
    
 }
 

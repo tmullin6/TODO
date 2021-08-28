@@ -1,7 +1,7 @@
 /*Factory Function that creates a ToDo Object with a name, 
 a description, a due date, and a date that the object was created.*/
 
-const ToDoItem = (name,desc,dueDate,createdDate,listed) => {
+const ToDoItem = (name,desc,dueDate,createdDate,listed,isComplete) => {
 
     
     const getTodayDate = ()=>{
