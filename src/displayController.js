@@ -1,4 +1,5 @@
 import add from './2x/outline_add_circle_outline_white_24dp.png';
+import githubIcon from './GitHub-Mark-Light-32px.png';
 
 //Display Module that renders app layout and forms to the page
 const Display = (()=>{
@@ -8,17 +9,27 @@ const Display = (()=>{
         const header = document.createElement('div');
         const title = document.createElement('div');
         const git = document.createElement('div');
+        const gitLink = document.createElement('a');
 
         header.classList.add("header");
         title.classList.add("head-text");
         git.classList.add("git-text");
 
         title.textContent="List-it";
-        git.textContent="Check out my github for more";
+        git.textContent="Check out my github for more  ";
+
+        const gitIcon = new Image();
+        gitIcon.src=githubIcon;
+        gitIcon.id="git-icon";
+
+        gitLink.href="https://github.com/tmullin6";
 
         document.body.appendChild(header);
         header.appendChild(title);
         header.appendChild(git);
+        gitLink.appendChild(gitIcon);
+        git.appendChild(gitLink);
+        
     };
 
     //Displays the main body of the web app.
@@ -30,6 +41,7 @@ const Display = (()=>{
         const projectList = document.createElement("div");
         const addProject = document.createElement('div');
         const toDoArea = document.createElement('div');
+    
         const cardList = document.createElement('div');
         const addItemDiv = document.createElement('div');
     
@@ -41,6 +53,7 @@ const Display = (()=>{
         projectTitles.classList.add("project-list-title");
         projectList.classList.add("project-list");
         addProject.classList.add("add-project");
+       
        
         projectTitles.textContent="Your Lists:"
         addProject.textContent = "Add New List";
@@ -55,7 +68,6 @@ const Display = (()=>{
         appArea.appendChild(toDoArea);
         appArea.appendChild(addItemDiv);
         toDoArea.appendChild(cardList);
-        
         addItemDiv.appendChild(addItem);
     
         sideBar.appendChild(projectTitles);
@@ -82,7 +94,7 @@ const Display = (()=>{
         title.textContent=`Add Task to ${list}`;
         name.textContent="Task:"
         desc.textContent="Description:";
-        dueDate.textContent="Due Date:";
+        dueDate.textContent="Select Due Date:";
         submit.textContent="Submit";
     
         title.classList.add("form-text");
@@ -99,8 +111,7 @@ const Display = (()=>{
         enterDesc.placeholder = "Description (optional)";
         enterDesc.id = "desc-input";
     
-        enterDate.type="input";
-        enterDate.placeholder="MM/DD/YYYY";
+        enterDate.type="date";
         enterDate.id = "date-input";
     
         submit.type='submit';

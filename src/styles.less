@@ -23,9 +23,14 @@ body {
     
     .git-text {
         color: white;
+        height: fit-content;
         font-size: 1em;
-        padding-top: 45px;
+        padding-top: 40px;
         padding-right: 10px;
+    }
+
+    #git-icon {
+        cursor: pointer;
     }
 }
 
@@ -87,6 +92,14 @@ body {
             margin: 10px;
             padding: 5px;
             
+            :hover {
+                border: 2px solid blue;
+                color: blue;
+                font-weight: bold;
+                display: flex;
+                height: fit-content;
+                background:lighten(@backgroundColor,35%);
+            }
             
             
 

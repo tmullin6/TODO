@@ -22,6 +22,8 @@ class List {
                 const remove = document.createElement("button");
 
                 projectCard.classList.add("project-card");
+               
+              
                 projectName.classList.add("project-name");
                 remove.classList.add("remove-list");
                 projectName.textContent = listArr[i].name;
@@ -30,8 +32,11 @@ class List {
                 projectCard.appendChild(projectName);
                 projectList.appendChild(projectCard);
 
-                if(i>0){
+                if(i==0){
+                    projectCard.classList.add("project-selected");
+                }
 
+                if(i>0){
                     projectCard.addEventListener("mouseenter",()=>{
                         projectCard.appendChild(remove);
                     });
@@ -43,7 +48,37 @@ class List {
                 };
                 
 
+            
+
+                projectName.addEventListener("click",()=>{
+                    const cardList = document.querySelector(".card-list");
+                    const projects =Array.from(document.querySelectorAll(".project-card"));
+
+                
+                    while(cardList.firstChild){
+                        cardList.removeChild(cardList.lastChild);
+                    };
+
+                    listArr.forEach(list => list.isDisplayed=false);
+                  
+                    for (let k=0; k<projects.length;k++) {
+                        projects[k].classList.remove("project-selected");
+                    }
+
+                    projectCard.classList.add("project-selected");
+                 
+                   
+                    listArr[i].isDisplayed=true;
+                    
+                    listArr[i].displayItems(listArr[i].items);
+                
+                    
+                }); 
+
                 remove.addEventListener("click",()=>{
+                    let choice = confirm(`Are you sure you want to delete the following list: \n ${listArr[i].name}`);
+
+                    if(choice == true){
                     const cardList = document.querySelector(".card-list");
 
                     while(cardList.firstChild){
@@ -54,24 +89,13 @@ class List {
                     this.removeItem(listArr[i],listArr);
                     this.displayLists(listArr);
                     saveToLocalStorage(listArr);
-                    console.log(listArr);
+                    location.reload();
+                    }
+                    else {
+                        return;
+                    }
+
                 });
-
-                projectName.addEventListener("click",()=>{
-                    const cardList = document.querySelector(".card-list");
-
-                    while(cardList.firstChild){
-                        cardList.removeChild(cardList.lastChild);
-                    };
-
-                    listArr.forEach( list => list.isDisplayed=false);
-                         
-                    projectCard.classList.add("project-selected");
-
-                    this.isDisplayed=true;
-                    
-                    this.displayItems(this.items);
-                }); 
             }
 
             listArr[i].isListed=true;
@@ -102,7 +126,13 @@ class List {
                 let cardDesc = document.createElement("div");
                 let cardDueDate = document.createElement("div");
                 let cardCreatedDate = document.createElement("div");
+
+                if(list[i].isComplete == false){
                 card.classList.add("todo-card");
+                }
+                else {
+                    card.classList.add("completed");
+                }
 
                 cardName.textContent=list[i].name;
                 cardDesc.textContent=list[i].desc;
@@ -124,34 +154,44 @@ class List {
         
                     buttonDiv.classList.add("card-buttons");
                     complete.classList.add("complete");
-                    remove.classList.add("remove")
+                    remove.classList.add("remove");
+
                     complete.textContent="Complete";
                     remove.textContent="Delete";
+
+                    if(list[i].isComplete ==false){
+
                     buttonDiv.appendChild(complete);
+
+                    }
+                  
+
                     buttonDiv.appendChild(remove);
                     card.appendChild(buttonDiv);
 
                     complete.addEventListener("click", ()=>{
-                  
-
-                        if(complete.textContent="complete") {
-                            complete.textContent="In Progress";
-                            card.classList.remove("todo-card");
-                            card.classList.add("completed");
-                        }
-                        else if( complete.textContent="In Progress") {
-                            complete.textContent="complete";
-                            card.classList.add("todo-card");
-                            card.classList.remove("completed");
-                        }
+                            
+                        list[i].isComplete =true;
+                        card.classList.remove("todo-card");
+                        card.classList.add("completed");
+                        saveToLocalStorage(toDoLists);
+                        
+                          
                     });
 
                     remove.addEventListener("click",()=>{
+                        let choice = confirm(`Do you want to delete the following item: \n\n ${list[i].name} \n ${list[i].desc}`);
+                        if(choice == true){
                         cardList.removeChild(card);
                         this.removeItem(list[i],list);
                         this.displayItems(list);
                         saveToLocalStorage(toDoLists);
-                    })
+
+                        }
+                        else {
+                            return;
+                        }
+                    });
                 });
                 
                 card.addEventListener("mouseleave", ()=>{
@@ -168,12 +208,7 @@ class List {
     removeItem(item,list) {
     
         let index = list.indexOf(item)
-        if(list.length===1){
-            list.pop()
-        }
-        else{
-            list.splice(index,1);
-        }
+        list.splice(index,1);
         return list;
     };
 }

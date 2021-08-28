@@ -1,5 +1,7 @@
 import ToDoItem from "./ToDoItem.js";
 
+
+
 //Function that creates a To Do Item object and returns the object with the user inputted values
 function createToDoItem () {
 
@@ -16,8 +18,11 @@ function createToDoItem () {
         let today = item.getTodayDate();
 
         item.listed = false;
+        item.isComplete=false;
         item.createdDate = today;
 
+      
+       
         return item;
 }
 
